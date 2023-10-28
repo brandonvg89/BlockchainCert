@@ -1,13 +1,7 @@
 #!/bin/bash
 
 # Ruta a la carpeta de tu proyecto py_chain
-PROJECT_DIR="/c/Users/delao/Documents/BlockchainPRJ/py_chain"
-
-# Nombre del entorno virtual
-VIRTUAL_ENV_NAME="blockchain_env"
-
-# Activa el entorno virtual
-source "/c/Users/delao/Documents/BlockchainPRJ/blockchain_env/Scripts/activate"
+PROJECT_DIR="C:\Users\Emilio\Desktop\Smart_Contracts_Course\BlockchainCert\py_chain"
 
 # Solicita al usuario el número de puerto
 read -p "Por favor, ingresa el número de puerto en el que deseas lanzar el servidor web de Django: " PORT

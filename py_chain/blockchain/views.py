@@ -29,6 +29,7 @@ class Blockchain:
         
     def replace_chain(self):
         network = self.nodes
+        print(network)
         longest_chain = None
         max_length = len(self.chain)
         
@@ -48,8 +49,7 @@ class Blockchain:
             if longest_chain:
                 self.chain = longest_chain
                 return True
-            
-            return False
+        return False
          
     def create_block(self, proof, previous_hash):
   
@@ -84,7 +84,7 @@ class Blockchain:
         check_proof = False
         while check_proof is False:
             hash_operation = hashlib.sha256(
-                str(new_proof**2 - previous_proof**2).encode()).hexdigest()
+                str(new_proof*2 - previous_proof*2).encode()).hexdigest()
             if hash_operation[:4] == '0000':
                 check_proof = True
             else:
@@ -110,7 +110,7 @@ class Blockchain:
             previous_proof = previous_block['proof']
             proof = block['proof']
             hash_operation = hashlib.sha256(
-                str(proof**2 - previous_proof**2).encode()).hexdigest()
+                str(proof*2 - previous_proof*2).encode()).hexdigest()
             
             if hash_operation[:4] != '0000':
                 return False
@@ -186,9 +186,10 @@ def add_transaction(request): #New
 
 # Connecting new nodes
 @csrf_exempt
-def connect_node(request): #New
+def connect_nodes(request): #New
     if request.method == 'POST':
         received_json = json.loads(request.body)
+        print(str(received_json))
         nodes = received_json.get('nodes')
         print(nodes)
         if nodes is None:
